@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f6f3ed" />
+  <meta name="description" content="用明星八卦、流行文化和互联网话题练习考研英语二阅读。10篇原创短文，支持沉浸式阅读、ADHD专注模式、点击查词和全文翻译。" />
+  <title>SIDEQUEST — English Reading Club</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="articles.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#home" aria-label="SIDEQUEST 首页">
+      <span class="brand-mark">S<span>.</span></span>
+      <span class="brand-copy"><strong>SIDEQUEST</strong><small>ENGLISH READING CLUB</small></span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a class="nav-link active" href="#library">READING ROOM</a>
+      <a class="nav-link" href="#progress">MY PROGRESS</a>
+    </nav>
+    <div class="top-actions">
+      <span class="edition">VOL. 01 <i></i> 2026</span>
+      <button class="icon-button theme-toggle" id="themeToggle" aria-label="切换深色模式" title="切换深色模式">◐</button>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap" id="library">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DAILY DOSE OF ENGLISH</div>
+        <h1>Read the <em>tea.</em><br>Learn the language.</h1>
+        <p class="hero-desc">明星争议、粉丝行动、真人秀翻车、网络迷因与 AI 音乐——把真实发生过的互联网故事，变成考研英语二阅读训练。</p>
+        <div class="hero-bottom">
+          <button class="primary-button" id="startButton">随便读一篇 <span>↗</span></button>
+          <div class="hero-note"><span class="sparkle">✳</span><span>10 ORIGINAL STORIES<br><b>ENGLISH II · INTERMEDIATE</b></span></div>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="阅读俱乐部主题插画">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="art-sticker sticker-top">HOT TAKE<br><b>✳ 100%</b></div>
+        <div class="art-paper"><span class="paper-kicker">THE DAILY SCROLL</span><div class="paper-headline">WHO<br>SAID<br>WHAT<span>?</span></div><div class="paper-line"></div><div class="paper-meta">CULTURE / PEOPLE / INTERNET</div><div class="paper-face">✦</div></div>
+        <div class="art-sticker sticker-bottom">READ<br>BETWEEN<br>THE LINES ↗</div>
+        <div class="art-scribble">not another<br>boring textbook</div>
+      </div>
+    </section>
+
+    <section class="wrap dashboard" id="progress">
+      <div class="section-heading"><div><span class="section-index">01 / YOUR SPACE</span><h2>Your little reading habit.</h2></div><span class="heading-aside">SMALL READS. BIG BRAIN.</span></div>
+      <div class="stats-grid">
+        <div class="stat-card stat-main"><div class="stat-label">READING PROGRESS <span>↗</span></div><div class="stat-number"><b id="progressCount">0</b><small> / 10</small></div><div class="progress-track"><span id="progressBar"></span></div><div class="stat-foot"><span id="progressMessage">Every page counts.</span><span id="progressPercent">0%</span></div></div>
+        <div class="stat-card"><div class="stat-label">WORDS TO DISCOVER</div><div class="stat-number"><b id="savedWordCount">0</b><small> words</small></div><div class="stat-foot"><span>Tap any word to look it up.</span><span class="stat-icon">Aa</span></div></div>
+        <div class="stat-card"><div class="stat-label">YOUR READING VIBE</div><div class="vibe-line"><span class="vibe-emoji">🫖</span><span id="vibeText">The curious beginner</span></div><div class="stat-foot"><span>Zero pressure, just progress.</span><span class="stat-icon">✳</span></div></div>
+      </div>
+    </section>
+
+    <section class="wrap library-section">
+      <div class="library-head"><div><span class="section-index">02 / THE LIBRARY</span><h2>Pick your next rabbit hole.</h2></div><label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="搜事件、明星、粉丝文化……" aria-label="搜索文章"><kbd>/</kbd></label></div>
+      <div class="filter-row" id="filterRow" aria-label="文章分类筛选">
+        <button class="filter-chip active" data-filter="All">ALL STORIES <span>10</span></button>
+        <button class="filter-chip" data-filter="Celebrity">CELEBRITY</button>
+        <button class="filter-chip" data-filter="Fandom">FANDOM</button>
+        <button class="filter-chip" data-filter="Music">MUSIC</button>
+        <button class="filter-chip" data-filter="Entertainment">TV / FILM</button>
+        <button class="filter-chip" data-filter="Internet">INTERNET</button>
+        <button class="filter-chip" data-filter="Technology">TECH</button>
+      </div>
+      <div class="story-grid" id="storyGrid" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden>没有找到这篇 gossip。换个关键词试试？</div>
+    </section>
+
+    <section class="wrap note-section">
+      <div class="note-card"><div class="note-mark">✳</div><div><span class="section-index">A NOTE FROM YOUR EDITOR</span><h3>English practice, but make it <em>interesting.</em></h3><p>文章是基于公开记录改写的真实事件阅读材料，难度参考考研英语（二）。戏剧化的是叙述方式，不是事实；每篇附有事实说明与参考资料线索。</p></div><div class="note-side">READ<br>CURIOUSLY<br><b>♡</b></div></div>
+    </section>
+  </main>
+
+  <section class="reader-screen" id="readerScreen" hidden aria-label="文章阅读区">
+    <div class="reader-topline"><button class="back-button" id="backButton">← <span>返回文章列表</span></button><div class="reader-breadcrumb">SIDEQUEST <span>/</span> READING ROOM <span>/</span> <b id="readerCategory">CULTURE</b></div><div class="reader-top-actions"><button class="icon-button" id="readerThemeToggle" title="切换主题">◐</button><button class="icon-button" id="immersiveToggle" title="沉浸式阅读">⛶</button></div></div>
+    <div class="reader-progress"><span id="readerProgressBar"></span></div>
+    <div class="reader-layout">
+      <aside class="reader-rail"><div class="rail-label">NOW READING</div><div class="rail-number" id="railNumber">01</div><div class="rail-rule"></div><div class="rail-category" id="railCategory">CELEBRITY</div><div class="rail-tip">TIP<br><span>Click any<br>word to<br>look it up.</span></div></aside>
+      <article class="reader-article" id="readerArticle">
+        <div class="article-meta"><span class="article-tag" id="articleTag">CELEBRITY</span><span id="articleReadTime">5 MIN READ</span><span id="articleLevel">LEVEL ★★★☆☆</span></div>
+        <h1 id="articleTitle">Article title</h1><p class="article-subtitle" id="articleSubtitle"></p>
+        <div class="article-toolbar">
+          <div class="tool-group"><button class="tool-button" id="adhdToggle"><span>◉</span> ADHD 专注模式 <i class="toggle-dot"></i></button><button class="tool-button" id="translationToggle">中 EN <span class="tool-caret">⌄</span></button></div>
+          <div class="tool-group"><button class="tool-button small-tool" id="fontDown" aria-label="缩小字体">A−</button><button class="tool-button small-tool" id="fontUp" aria-label="放大字体">A＋</button></div>
+        </div>
+        <div class="article-content-wrap"><div class="passage" id="passage"></div><div class="full-translation" id="fullTranslation" hidden><div class="translation-heading"><span>中文全文翻译</span><span>READING NOTE</span></div><div id="translationContent"></div></div></div>
+        <section class="reality-check" id="realityCheck" hidden aria-label="事实说明与参考资料"></section>
+        <div class="article-bottom"><span class="word-hint">✳ 点击英文单词，查看释义</span><button class="mark-read-button" id="markReadButton">标记为已读 <span>✓</span></button></div>
+        <section class="quiz-section" id="quizSection"><div class="quiz-heading"><div><span class="section-index">03 / CHECK YOUR UNDERSTANDING</span><h2>Did you get the tea?</h2></div><span class="quiz-count">3 QUESTIONS · SINGLE CHOICE</span></div><div id="quizList"></div><div class="quiz-footer"><span id="quizResult">读完文章后，来检验一下理解程度。</span><button class="primary-button" id="submitQuiz">提交答案 <span>↗</span></button></div></section>
+        <div class="next-article" id="nextArticle"><div><span class="section-index">KEEP THE MOMENTUM</span><strong>One more story?</strong></div><button class="next-button" id="nextButton">NEXT STORY ↗</button></div>
+      </article>
+      <aside class="reader-aside"><div class="aside-card word-card"><span class="section-index">WORD HUNT</span><div class="word-card-icon">Aa</div><h3>Build your<br>word stash.</h3><p>遇到不认识的词？点一下就能查。你查过的词会保存在这里。</p><div class="saved-words" id="savedWords"><span class="saved-empty">Your words will show up here.</span></div></div><div class="aside-card aside-tip"><span class="section-index">READING HACK</span><p>不要每个词都查。先读完整段，猜测意思，再挑真正影响理解的词。</p><span class="tip-star">✳</span></div></aside>
+    </div>
+  </section>
+
+  <div class="ruler" id="readingRuler" aria-hidden="true"></div>
+  <div class="dictionary-pop" id="dictionaryPop" hidden role="dialog" aria-live="polite" aria-label="单词释义"><button class="dict-close" id="dictClose" aria-label="关闭">×</button><span class="dict-label">QUICK LOOKUP</span><h3 id="dictWord">word</h3><div class="dict-phonetic" id="dictPhonetic"></div><div class="dict-meaning" id="dictMeaning"></div><div class="dict-actions"><button id="saveWordButton">＋ 收藏单词</button><a id="dictExternal" href="#" target="_blank" rel="noopener">更多释义 ↗</a></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <footer class="site-footer"><span>© 2026 SIDEQUEST ENGLISH</span><span>MADE FOR THE LOVE OF WORDS <b>✳</b></span><a href="#home">BACK TO TOP ↑</a></footer>
+</body>
+</html>
